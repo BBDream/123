@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+
+<style>
+  /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+/* Document
+   ========================================================================== */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+
+ html {
+    line-height: 1.15; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+  }
+  
+  /* Sections
+     ========================================================================== */
+  
+  /**
+   * Remove the margin in all browsers.
+   */
+  
+  body {
+    margin: 0;
+  }
+  
+  /**
+   * Render the `main` element consistently in IE.
+   */
+  
+  main {
+    display: block;
+  }
+  
+  /**
+   * Correct the font size and margin on `h1` elements within `section` and
+   * `article` contexts in Chrome, Firefox, and Safari.
+   */
+  
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+  
+  /* Grouping content
+     ========================================================================== */
+  
+  /**
+   * 1. Add the correct box sizing in Firefox.
+   * 2. Show the overflow in Edge and IE.
+   */
+  
+  hr {
+    box-sizing: content-box; /* 1 */
+    height: 0; /* 1 */
+    overflow: visible; /* 2 */
+  }
+  
+  /**
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
+  
+  pre {
+    font-family: monospace, monospace; /* 1 */
+    font-size: 1em; /* 2 */
+  }
+  
+  /* Text-level semantics
+     ========================================================================== */
+  
+  /**
+   * Remove the gray background on active links in IE 10.
+   */
+  
+  a {
+    background-color: transparent;
+  }
+  
+  /**
+   * 1. Remove the bottom border in Chrome 57-
+   * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+   */
+  
+  abbr[title] {
+    border-bottom: none; /* 1 */
+    text-decoration: underline; /* 2 */
+    text-decoration: underline dotted; /* 2 */
+  }
+  
+  /**
+   * Add the correct font weight in Chrome, Edge, and Safari.
+   */
+  
+  b,
+  strong {
+    font-weight: bolder;
+  }
+  
+  /**
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
+  
+  code,
+  kbd,
+  samp {
+    font-family: monospace, monospace; /* 1 */
+    font-size: 1em; /* 2 */
+  }
+  
+  /**
+   * Add the correct font size in all browsers.
+   */
+  
+  small {
+    font-size: 80%;
+  }
+  
+  /**
+   * Prevent `sub` and `sup` elements from affecting the line height in
+   * all browsers.
+   */
+  
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  
+  sub {
+    bottom: -0.25em;
+  }
+  
+  sup {
+    top: -0.5em;
+  }
+  
+  /* Embedded content
+     ========================================================================== */
+  
+  /**
+   * Remove the border on images inside links in IE 10.
+   */
+  
+  img {
+    border-style: none;
+  }
+  
+  /* Forms
+     ========================================================================== */
+  
+  /**
+   * 1. Change the font styles in all browsers.
+   * 2. Remove the margin in Firefox and Safari.
+   */
+  
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 1 */
+    line-height: 1.15; /* 1 */
+    margin: 0; /* 2 */
+  }
+  
+  /**
+   * Show the overflow in IE.
+   * 1. Show the overflow in Edge.
+   */
+  
+  button,
+  input { /* 1 */
+    overflow: visible;
+  }
+  
+  /**
+   * Remove the inheritance of text transform in Edge, Firefox, and IE.
+   * 1. Remove the inheritance of text transform in Firefox.
+   */
+  
+  button,
+  select { /* 1 */
+    text-transform: none;
+  }
+  
+  /**
+   * Correct the inability to style clickable types in iOS and Safari.
+   */
+  
+  button,
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    -webkit-appearance: button;
+  }
+  
+  /**
+   * Remove the inner border and padding in Firefox.
+   */
+  
+  button::-moz-focus-inner,
+  [type="button"]::-moz-focus-inner,
+  [type="reset"]::-moz-focus-inner,
+  [type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+  }
+  
+  /**
+   * Restore the focus styles unset by the previous rule.
+   */
+  
+  button:-moz-focusring,
+  [type="button"]:-moz-focusring,
+  [type="reset"]:-moz-focusring,
+  [type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+  }
+  
+  /**
+   * Correct the padding in Firefox.
+   */
+  
+  fieldset {
+    padding: 0.35em 0.75em 0.625em;
+  }
+  
+  /**
+   * 1. Correct the text wrapping in Edge and IE.
+   * 2. Correct the color inheritance from `fieldset` elements in IE.
+   * 3. Remove the padding so developers are not caught out when they zero out
+   *    `fieldset` elements in all browsers.
+   */
+  
+  legend {
+    box-sizing: border-box; /* 1 */
+    color: inherit; /* 2 */
+    display: table; /* 1 */
+    max-width: 100%; /* 1 */
+    padding: 0; /* 3 */
+    white-space: normal; /* 1 */
+  }
+  
+  /**
+   * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+   */
+  
+  progress {
+    vertical-align: baseline;
+  }
+  
+  /**
+   * Remove the default vertical scrollbar in IE 10+.
+   */
+  
+  textarea {
+    overflow: auto;
+  }
+  
+  /**
+   * 1. Add the correct box sizing in IE 10.
+   * 2. Remove the padding in IE 10.
+   */
+  
+  [type="checkbox"],
+  [type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+  }
+  
+  /**
+   * Correct the cursor style of increment and decrement buttons in Chrome.
+   */
+  
+  [type="number"]::-webkit-inner-spin-button,
+  [type="number"]::-webkit-outer-spin-button {
+    height: auto;
+  }
+  
+  /**
+   * 1. Correct the odd appearance in Chrome and Safari.
+   * 2. Correct the outline style in Safari.
+   */
+  
+  [type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    outline-offset: -2px; /* 2 */
+  }
+  
+  /**
+   * Remove the inner padding in Chrome and Safari on macOS.
+   */
+  
+  [type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  
+  /**
+   * 1. Correct the inability to style clickable types in iOS and Safari.
+   * 2. Change font properties to `inherit` in Safari.
+   */
+  
+  ::-webkit-file-upload-button {
+    -webkit-appearance: button; /* 1 */
+    font: inherit; /* 2 */
+  }
+  
+  /* Interactive
+     ========================================================================== */
+  
+  /*
+   * Add the correct display in Edge, IE 10+, and Firefox.
+   */
+  
+  details {
+    display: block;
+  }
+  
+  /*
+   * Add the correct display in all browsers.
+   */
+  
+  summary {
+    display: list-item;
+  }
+  
+  /* Misc
+     ========================================================================== */
+  
+  /**
+   * Add the correct display in IE 10+.
+   */
+  
+  template {
+    display: none;
+  }
+  
+  /**
+   * Add the correct display in IE 10.
+   */
+  
+  [hidden] {
+    display: none;
+  }
+
+
+
+  body {
+  width: 100%;
+  min-width: 100px;
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 14px;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+div {
+  box-sizing: border-box;
+}
+.bottom {
+    background-color: gray;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 0px;
+}
+
+
+.innerbox{
+  overflow-y: auto;
+  background-color: #f8f8f8;
+}
+  .innerbox::-webkit-scrollbar {/*滚动条整体样式*/
+      width: 1.5px;     /*高宽分别对应横竖滚动条的尺寸*/
+      height: 4px;
+      scrollbar-arrow-color:red;
+
+  }
+  .innerbox::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.2);
+      scrollbar-arrow-color:red;
+  }
+  .innerbox::-webkit-scrollbar-track {/*滚动条里面轨道*/
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      border-radius: 0;
+      background: rgba(0,0,0,0.1);
+  }
+
+  
+
+</style>
+
+
+
+
+<body>
+    <div id="app">
+
+
+        <div class="bottom" style="padding: 1% 1% 1% 0%;">
+          <div>
+            <el-button v-for="item in oneButton" style="width: 9%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">{{item}}</el-button>
+          </div>
+
+          <div>
+            
+            <el-button v-for="item in twoButton" style="width: 9%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">{{item}}</el-button>
+            
+          </div>
+
+          <div style="font-size: 0px;">
+            <el-button style="width: 14%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">分词</el-button>
+            
+            <el-button v-for="item in threeButton" style="width: 9%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">{{item}}</el-button>
+            <el-button style="width: 14%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">删除</el-button>
+          </div>
+
+          <div style="font-size: 0px;">
+            <el-button style="width: 14%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">符号</el-button>
+            <el-button style="width: 14%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">数字</el-button>
+            <el-button style="width: 9%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">，</el-button>
+            <el-button style="width: 19%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">空格</el-button>
+            <el-button style="width: 9%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">。</el-button>
+            <el-button style="width: 14%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">切换</el-button>
+            <el-button style="width: 14%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">搜索</el-button>
+          </div>
+        </div>
+
+        <hr style="line-height: 10px;">
+
+        <div class="bottom" style="padding: 1% 1% 1% 0%;">
+
+          <div style="font-size: 0px;text-align: center;display: block;margin-bottom: 1%;position: relative;">
+
+            <div class="innerbox" style="width: 14%;margin-left: 1%;padding: 0px;display: inline-block;font-size: 14px;background-color: white;position: absolute;top: 0;bottom: 0;line-height: 40px;overflow-y: scroll;border-radius: 4px;">   
+              1<br>2<br>3<br>4<br>5<br>6<br>7<br8><br>9<br>
+            </div>
+
+            <div style="width: 14%;margin-left: 1%;padding: 0px;display: inline-block;font-size: 14px;background-color: turquoise;">   
+              <br>
+            </div>
+
+            <div style="width: 69%;margin-left: 1%;padding: 0px;display: inline-block;">
+              <div style="display: flex;display: -webkit-flex;">
+                <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;">1</el-button>
+                <el-button style="margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;">2</el-button>
+                <el-button style="margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;">3</el-button>
+              </div>
+              <div style="display: flex;display: -webkit-flex;">
+                <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;">4</el-button>
+                <el-button style="margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;">5</el-button>
+                <el-button style="margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;">6</el-button>
+              </div>
+              <div style="display: flex;display: -webkit-flex;">
+                <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 0%;flex: 1;">7</el-button>
+                <el-button style="margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 0%;flex: 1;">8</el-button>
+                <el-button style="margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 0%;flex: 1;">9</el-button>
+              </div>
+            </div>
+
+            <div style="width: 14%;margin-left: 1%;padding: 0px;display: inline-block;">
+              <div style="display: flex;display: -webkit-flex;">
+                <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 4.9%;flex: 1;">删除</el-button> 
+              </div>
+              <div style="display: flex;display: -webkit-flex;">
+                <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 4.9%;flex: 1;">.</el-button>
+              </div>
+              <div style="display: flex;display: -webkit-flex;">
+                <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 0%;flex: 1;">。</el-button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom"> 
+            <el-button style="width: 14%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">符号</el-button>
+            <el-button style="width: 14%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">返回</el-button>
+            <el-button style="width: 39%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">0</el-button>
+            <el-button style="width: 14%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">空格</el-button>
+            <el-button style="width: 14%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 1%;">搜索</el-button>
+          </div>
+
+        </div>    
+
+        <hr style="line-height: 10px;">
+
+        <div class="bottom" style="padding: 1% 0% 1% 0%;position: relative;">
+          <div style="display: inline-block;font-size: 14px;width: 14%;margin-right: 1%;font-size: 0px;">
+            <div class="innerbox" style="height: 135px;font-size: 14px;background-color: white;line-height: 40px;padding: 0px;border-radius: 4px;margin-bottom: 5px;">
+              常用❤  <br>英文 <br>
+              中文  <br>数学 <br>
+              网络  <br>符号 
+            </div>
+            <br>
+            <div style="margin-top: 1%;"><el-button style="width: 100%;margin-left: 1%;padding: 0px;line-height: 40px;">返回</el-button></div>
+          </div>
+          <div style="display: inline-block;font-size: 14px;width: 68%;margin-right: 1%;height: 183px;position: absolute;left: 16%;border-radius: 4px;background-color: white;padding: 0px;">
+            <div style="display: flex;display: -webkit-flex;">
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+            </div>
+            <div style="display: flex;display: -webkit-flex;">
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+            </div>
+            <div style="display: flex;display: -webkit-flex;">
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+            </div>
+            <div style="display: flex;display: -webkit-flex;">
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+              <el-button style="margin-left: 0%;padding: 0px;line-height: 40px;margin-bottom: 1%;flex: 1;border-color: white;">1</el-button>
+            </div>
+          </div>
+          
+          <div style="display: inline-block;font-size: 14px;width: 67%;margin-right: 1%;height: 3px;">123</div>
+          <div style="display: inline-block;font-size: 14px;width: 14%;margin-left: 1%;">
+            <el-button style="width: 100%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 5px;">。</el-button><br>
+            <el-button style="width: 100%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 5px;">空格</el-button><br>
+            <el-button style="width: 100%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 5px;">删除</el-button><br>
+            <el-button style="width: 100%;margin-left: 1%;padding: 0px;line-height: 40px;margin-bottom: 5px;">搜索</el-button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    
+    
+
+
+
+
+<script>
+    var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello gsde!',
+    oneButton : ["Q/1","W/2","E/3","R/4","T/5","Y/6","U/7","I/8","O/9","P/0"],
+    twoButton : ["A","S","D","F","G","H","J","K","L"],
+    threeButton : ["Z","X","C","V","B","N","M"]
+  },
+  methods: {
+ 
+  }
+})
+</script>
+
+
+</body>
+</html>
